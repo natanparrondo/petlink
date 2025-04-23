@@ -255,13 +255,13 @@ class WeekActivity extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 16),
           SizedBox(
             height: 200,
             child: CustomPaint(
               painter: _BarChartPainter(
                 data: dailyMinutes,
-                barSpacing: 16,
+                barSpacing: 12,
                 average: averageDailyMinutes,
               ),
               size: Size(double.infinity, 200),

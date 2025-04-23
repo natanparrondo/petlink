@@ -1,6 +1,7 @@
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:2452122273.
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:1597912246.
 import 'package:flutter/foundation.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/components/widgets.dart';
 import 'style/text_styles.dart';
@@ -62,43 +63,59 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
+      extendBodyBehindAppBar: true,
+
       backgroundColor: AppColors.background,
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            spacing: 12,
-            children: [
-              WeightTile(
-                weight: 20,
-                idealWeight: "12 - 20",
-                statusWeight: "statusWeight",
+        child: Column(
+          children: <Widget>[
+            // Asegúrate de que la ruta y el nombre del archivo sean correctos
+            Stack(
+              children: [
+                Image.asset("lib/assets/images/header_bg.png"),
+                SafeArea(
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: SvgPicture.asset(
+                              "lib/assets/logo_horizontal.svg",
+                            ),
+                          ),
+                          const Spacer(),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: SvgPicture.asset(
+                              "lib/assets/icons/setting.svg",
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                spacing: 12,
+                children: [
+                  WeightTile(
+                    weight: 20,
+                    idealWeight: "12 - 20",
+                    statusWeight: "statusWeight",
+                  ),
+                  WeekActivity(dailyMinutes: [60, 30, 19, 31, 13, 20, 0]),
+                ],
               ),
-              WeekActivity(dailyMinutes: [90, 30, 19, 31, 13, 20, 32]),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
