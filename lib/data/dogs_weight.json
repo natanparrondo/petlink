@@ -1,0 +1,282 @@
+[
+  {
+    "breed": "Caniche Toy",
+    "min_slightly_underweight": 2.16,
+    "min_normal": 2.7,
+    "min_slightly_overweight": 3.35,
+    "min_significant_overweight": 4.0
+  },
+  {
+    "breed": "Caniche Miniatura",
+    "min_slightly_underweight": 3.2,
+    "min_normal": 4.0,
+    "min_slightly_overweight": 5.5,
+    "min_significant_overweight": 7.0
+  },
+  {
+    "breed": "Caniche Mediano (Estándar)",
+    "min_slightly_underweight": 9.6,
+    "min_normal": 12.0,
+    "min_slightly_overweight": 16.0,
+    "min_significant_overweight": 20.0
+  },
+  {
+    "breed": "Caniche Gigante",
+    "min_slightly_underweight": 16.0,
+    "min_normal": 20.0,
+    "min_slightly_overweight": 25.0,
+    "min_significant_overweight": 30.0
+  },
+  {
+    "breed": "Labrador Retriever",
+    "min_slightly_underweight": 20.0,
+    "min_normal": 25.0,
+    "min_slightly_overweight": 30.5,
+    "min_significant_overweight": 36.0
+  },
+  {
+    "breed": "Golden Retriever",
+    "min_slightly_underweight": 20.0,
+    "min_normal": 25.0,
+    "min_slightly_overweight": 29.5,
+    "min_significant_overweight": 34.0
+  },
+  {
+    "breed": "Dogo Argentino",
+    "min_slightly_underweight": 32.0,
+    "min_normal": 40.0,
+    "min_slightly_overweight": 42.5,
+    "min_significant_overweight": 45.0
+  },
+  {
+    "breed": "Pastor Alemán",
+    "min_slightly_underweight": 17.6,
+    "min_normal": 22.0,
+    "min_slightly_overweight": 31.0,
+    "min_significant_overweight": 40.0
+  },
+  {
+    "breed": "Bulldog Francés",
+    "min_slightly_underweight": 6.4,
+    "min_normal": 8.0,
+    "min_slightly_overweight": 11.0,
+    "min_significant_overweight": 14.0
+  },
+  {
+    "breed": "Beagle",
+    "min_slightly_underweight": 7.2,
+    "min_normal": 9.0,
+    "min_slightly_overweight": 11.5,
+    "min_significant_overweight": 14.0
+  },
+  {
+    "breed": "Cocker Spaniel Inglés",
+    "min_slightly_underweight": 10.4,
+    "min_normal": 13.0,
+    "min_slightly_overweight": 14.5,
+    "min_significant_overweight": 16.0
+  },
+  {
+    "breed": "Cocker Spaniel Americano",
+    "min_slightly_underweight": 8.0,
+    "min_normal": 10.0,
+    "min_slightly_overweight": 12.0,
+    "min_significant_overweight": 14.0
+  },
+  {
+    "breed": "Boxer",
+    "min_slightly_underweight": 20.0,
+    "min_normal": 25.0,
+    "min_slightly_overweight": 28.5,
+    "min_significant_overweight": 32.0
+  },
+  {
+    "breed": "Doberman",
+    "min_slightly_underweight": 24.0,
+    "min_normal": 30.0,
+    "min_slightly_overweight": 35.0,
+    "min_significant_overweight": 40.0
+  },
+  {
+    "breed": "Pug (Carlino)",
+    "min_slightly_underweight": 4.8,
+    "min_normal": 6.0,
+    "min_slightly_overweight": 7.0,
+    "min_significant_overweight": 8.0
+  },
+  {
+    "breed": "Schnauzer Miniatura",
+    "min_slightly_underweight": 3.6,
+    "min_normal": 4.5,
+    "min_slightly_overweight": 6.25,
+    "min_significant_overweight": 8.0
+  },
+  {
+    "breed": "Schnauzer Mediano (Estándar)",
+    "min_slightly_underweight": 11.2,
+    "min_normal": 14.0,
+    "min_slightly_overweight": 17.0,
+    "min_significant_overweight": 20.0
+  },
+  {
+    "breed": "Schnauzer Gigante",
+    "min_slightly_underweight": 21.6,
+    "min_normal": 27.0,
+    "min_slightly_overweight": 37.5,
+    "min_significant_overweight": 48.0
+  },
+  {
+    "breed": "Yorkshire Terrier",
+    "min_slightly_underweight": 1.6,
+    "min_normal": 2.0,
+    "min_slightly_overweight": 2.75,
+    "min_significant_overweight": 3.5
+  },
+  {
+    "breed": "Shih Tzu",
+    "min_slightly_underweight": 3.2,
+    "min_normal": 4.0,
+    "min_slightly_overweight": 5.6,
+    "min_significant_overweight": 7.2
+  },
+  {
+    "breed": "Chihuahua",
+    "min_slightly_underweight": 1.2,
+    "min_normal": 1.5,
+    "min_slightly_overweight": 2.25,
+    "min_significant_overweight": 3.0
+  },
+  {
+    "breed": "Border Collie",
+    "min_slightly_underweight": 11.2,
+    "min_normal": 14.0,
+    "min_slightly_overweight": 18.0,
+    "min_significant_overweight": 22.0
+  },
+  {
+    "breed": "Bichón Frisé",
+    "min_slightly_underweight": 4.0,
+    "min_normal": 5.0,
+    "min_slightly_overweight": 7.5,
+    "min_significant_overweight": 10.0
+  },
+  {
+    "breed": "Rottweiler",
+    "min_slightly_underweight": 28.0,
+    "min_normal": 35.0,
+    "min_slightly_overweight": 47.5,
+    "min_significant_overweight": 60.0
+  },
+  {
+    "breed": "Mestizo Pequeño",
+    "min_slightly_underweight": 4.0,
+    "min_normal": 5.0,
+    "min_slightly_overweight": 7.5,
+    "min_significant_overweight": 10.0
+  },
+  {
+    "breed": "Mestizo Mediano",
+    "min_slightly_underweight": 8.0,
+    "min_normal": 10.0,
+    "min_slightly_overweight": 15.0,
+    "min_significant_overweight": 20.0
+  },
+  {
+    "breed": "Mestizo Grande",
+    "min_slightly_underweight": 16.0,
+    "min_normal": 20.0,
+    "min_slightly_overweight": 27.5,
+    "min_significant_overweight": 35.0
+  },
+  {
+    "breed": "Pitbull Terrier",
+    "min_slightly_underweight": 11.2,
+    "min_normal": 14.0,
+    "min_slightly_overweight": 22.0,
+    "min_significant_overweight": 30.0
+  },
+  {
+    "breed": "Gran Danés",
+    "min_slightly_underweight": 36.0,
+    "min_normal": 45.0,
+    "min_slightly_overweight": 67.5,
+    "min_significant_overweight": 90.0
+  },
+  {
+    "breed": "Akita Inu Japonés",
+    "min_slightly_underweight": 25.6,
+    "min_normal": 32.0,
+    "min_slightly_overweight": 35.5,
+    "min_significant_overweight": 39.0
+  },
+  {
+    "breed": "Akita Inu Americano",
+    "min_slightly_underweight": 36.0,
+    "min_normal": 45.0,
+    "min_slightly_overweight": 52.0,
+    "min_significant_overweight": 59.0
+  },
+  {
+    "breed": "Husky Siberiano",
+    "min_slightly_underweight": 12.8,
+    "min_normal": 16.0,
+    "min_slightly_overweight": 21.5,
+    "min_significant_overweight": 27.0
+  },
+  {
+    "breed": "Shar Pei",
+    "min_slightly_underweight": 14.4,
+    "min_normal": 18.0,
+    "min_slightly_overweight": 24.0,
+    "min_significant_overweight": 30.0
+  },
+  {
+    "breed": "Fox Terrier (liso o duro)",
+    "min_slightly_underweight": 4.8,
+    "min_normal": 6.0,
+    "min_slightly_overweight": 7.5,
+    "min_significant_overweight": 9.0
+  },
+  {
+    "breed": "Jack Russell Terrier",
+    "min_slightly_underweight": 4.8,
+    "min_normal": 6.0,
+    "min_slightly_overweight": 7.0,
+    "min_significant_overweight": 8.0
+  },
+  {
+    "breed": "Maltés",
+    "min_slightly_underweight": 2.4,
+    "min_normal": 3.0,
+    "min_slightly_overweight": 3.5,
+    "min_significant_overweight": 4.0
+  },
+  {
+    "breed": "Galgo Español",
+    "min_slightly_underweight": 18.4,
+    "min_normal": 23.0,
+    "min_slightly_overweight": 26.5,
+    "min_significant_overweight": 30.0
+  },
+  {
+    "breed": "Galgo Criollo",
+    "min_slightly_underweight": 14.4,
+    "min_normal": 18.0,
+    "min_slightly_overweight": 23.0,
+    "min_significant_overweight": 28.0
+  },
+  {
+    "breed": "Weimaraner",
+    "min_slightly_underweight": 20.0,
+    "min_normal": 25.0,
+    "min_slightly_overweight": 32.5,
+    "min_significant_overweight": 40.0
+  },
+  {
+    "breed": "Pekinés",
+    "min_slightly_underweight": 2.4,
+    "min_normal": 3.0,
+    "min_slightly_overweight": 4.5,
+    "min_significant_overweight": 6.0
+  }
+]

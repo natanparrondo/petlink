@@ -13,6 +13,12 @@ class AppTextStyles {
     color: Colors.white,
   );
 
+  static const appBarTitle = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w500, // Medium
+    color: Colors.white,
+  );
+
   static const text = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400, // Regular
@@ -26,6 +32,12 @@ class AppTextStyles {
   );
 
   static final textSmall = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400, // Regular
+    color: Colors.white,
+  );
+
+  static final textSmallDimmed = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400, // Regular
     color: Colors.white.withOpacity(0.4),

@@ -1,8 +1,11 @@
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:146425495.
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/components/big_number.dart';
+import 'package:myapp/services/prefs_service.dart';
+import 'package:myapp/services/relative_time.dart';
 import 'package:myapp/style/colors.dart';
 import 'package:myapp/style/text_styles.dart';
 
@@ -10,76 +13,165 @@ class WeightTile extends StatelessWidget {
   final double weight;
   final String idealWeight;
   final String statusWeight;
+  final DateTime? lastUpdated;
+  final VoidCallback onWeightUpdated;
 
   const WeightTile({
     super.key,
     required this.weight,
     required this.idealWeight,
     required this.statusWeight,
+    required this.onWeightUpdated,
+    required this.lastUpdated,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(12)),
-        color: AppColors.tile,
-      ),
-      padding: const EdgeInsets.fromLTRB(16, 16, 12, 16),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(children: [Text("Peso", style: AppTextStyles.tileTitle)]),
-              Row(
-                children: [
-                  Text(
-                    "Último registro: Ayer",
-                    style: AppTextStyles.textDimmed,
-                  ),
-                  Icon(Icons.chevron_right, color: AppColors.white60),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 4),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              BigNumber(amount: weight, unit: "kg"),
-              Column(
-                children: [
-                  Row(
+    return GestureDetector(
+      onTap: () {
+        TextEditingController _pesoController = TextEditingController();
+        showDialog(
+          context: context,
+          builder:
+              (context) => Dialog(
+                backgroundColor: AppColors.tile,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(
-                        Icons.warning_amber_sharp,
-                        color: AppColors.yellow,
-                        size: 20,
-                      ),
-                      const SizedBox(width: 4),
                       Text(
-                        statusWeight,
-                        style: AppTextStyles.text.copyWith(
-                          color: AppColors.yellow,
+                        "Introducir nuevo peso",
+                        style: AppTextStyles.tileTitle,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        "Último peso no está actualizado",
+                        style: AppTextStyles.textDimmed,
+                      ),
+                      const SizedBox(height: 16),
+                      TextField(
+                        controller: _pesoController,
+                        keyboardType: TextInputType.numberWithOptions(
+                          decimal: true,
+                        ),
+                        style: AppTextStyles.text,
+                        decoration: InputDecoration(
+                          hintText: "Ej: 12.5",
+                          hintStyle: AppTextStyles.textDimmed,
+                          filled: true,
+                          fillColor: AppColors.tile,
+                          contentPadding: const EdgeInsets.symmetric(
+                            vertical: 12,
+                            horizontal: 12,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(color: AppColors.white60),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(color: AppColors.white60),
+                          ),
                         ),
                       ),
-                      const SizedBox(width: 4),
+                      const SizedBox(height: 24),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text("Cancelar", style: AppTextStyles.text),
+                          ),
+                          const SizedBox(width: 8),
+                          TextButton(
+                            onPressed: () async {
+                              final peso =
+                                  double.tryParse(_pesoController.text) ?? 0.0;
+                              final now = DateTime.now();
+                              await PrefsService.setDouble('pet_weight', peso);
+                              await PrefsService.setDateTime(
+                                'pet_weight_last_updated',
+                                now,
+                              );
+
+                              onWeightUpdated();
+                              Navigator.pop(context);
+                            },
+                            child: Text("Guardar", style: AppTextStyles.text),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
-                  const SizedBox(height: 8),
-                ],
+                ),
               ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text("Ideal: $idealWeight", style: AppTextStyles.textDimmed),
-            ],
-          ),
-        ],
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          color: AppColors.tile,
+        ),
+        padding: const EdgeInsets.fromLTRB(16, 16, 12, 16),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(children: [Text("Peso", style: AppTextStyles.tileTitle)]),
+                Row(
+                  children: [
+                    Text(
+                      "Último registro: ${lastUpdated != null ? formatFechaCustom(lastUpdated!) : "N/A"}", // Fixed variable
+                      style: AppTextStyles.textDimmed,
+                    ),
+                    Icon(Icons.chevron_right, color: AppColors.white60),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 4),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                BigNumber(amount: weight, unit: "kg"),
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.warning_amber_sharp,
+                          color: AppColors.yellow,
+                          size: 20,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(
+                          statusWeight,
+                          style: AppTextStyles.text.copyWith(
+                            color: AppColors.yellow,
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                  ],
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("Ideal: $idealWeight", style: AppTextStyles.textDimmed),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -164,7 +256,10 @@ class _BarChartPainter extends CustomPainter {
     for (int i = 0; i < dayLabels.length; i++) {
       final x = i * (barWidth + barSpacing) + sidePadding;
       final textPainter = TextPainter(
-        text: TextSpan(text: dayLabels[i], style: AppTextStyles.textSmall),
+        text: TextSpan(
+          text: dayLabels[i],
+          style: AppTextStyles.textSmallDimmed,
+        ),
         textDirection: TextDirection.ltr,
       )..layout();
       textPainter.paint(
@@ -175,7 +270,7 @@ class _BarChartPainter extends CustomPainter {
 
     // Draw minute labels (0m, 60m)
     final textPainter0 = TextPainter(
-      text: TextSpan(text: "0m", style: AppTextStyles.textSmall),
+      text: TextSpan(text: "0m", style: AppTextStyles.textSmallDimmed),
       textDirection: TextDirection.ltr,
     )..layout();
     textPainter0.paint(
@@ -184,7 +279,7 @@ class _BarChartPainter extends CustomPainter {
     );
 
     final textPainter60 = TextPainter(
-      text: TextSpan(text: "60m", style: AppTextStyles.textSmall),
+      text: TextSpan(text: "60m", style: AppTextStyles.textSmallDimmed),
       textDirection: TextDirection.ltr,
     )..layout();
     textPainter60.paint(

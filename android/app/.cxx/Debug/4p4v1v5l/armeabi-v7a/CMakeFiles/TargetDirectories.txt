@@ -1,0 +1,2 @@
+C:/Users/natan/Desktop/pyde/petlink/android/app/.cxx/Debug/4p4v1v5l/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/natan/Desktop/pyde/petlink/android/app/.cxx/Debug/4p4v1v5l/armeabi-v7a/CMakeFiles/rebuild_cache.dir
