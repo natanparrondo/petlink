@@ -23,21 +23,25 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   double? _petWeight;
+  String? _petName;
   DateTime? _lastUpdatedWeight;
 
   @override
   void initState() {
     super.initState();
-    _loadPeso();
+    _loadPetData();
   }
 
-  Future<void> _loadPeso() async {
+  Future<void> _loadPetData() async {
     final peso =
         await prefs_service.PrefsService.getDouble('pet_weight') ?? 0.0;
+    final nombre =
+        await prefs_service.PrefsService.getString('pet_name') ?? "Sin nombre";
     final lastUpdated = await prefs_service.PrefsService.getDateTime(
       'pet_weight_last_updated',
     );
     setState(() {
+      _petName = nombre;
       _petWeight = peso;
       _lastUpdatedWeight = lastUpdated;
     });
@@ -107,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                                 }
                               },
 
-                              onViewPetId: () {
+                              onViewPetId: () async {
                                 final route =
                                     Theme.of(context).platform ==
                                             TargetPlatform.iOS
@@ -118,21 +122,22 @@ class _HomePageState extends State<HomePage> {
                                           builder: (_) => const PetLinkIDPage(),
                                         );
 
-                                Navigator.of(context).push(route);
+                                await Navigator.of(context).push(route);
+                                _loadPetData(); // Recarga los datos al volver
                               },
 
                               imageAsset: "lib/assets/images/collar.png",
-                              deviceName: "Petlink de Juana",
+                              deviceName: "Petlink de $_petName",
                               batteryText: "80% (aprox. 3 días)",
                             ),
                             WeightTile(
                               lastUpdated: _lastUpdatedWeight,
-                              onWeightUpdated: () => _loadPeso(),
+                              onWeightUpdated: () => _loadPetData(),
                               weight: _petWeight ?? 0.0,
                               idealWeight: "12 - 20",
                               statusWeight: "statusWeight",
                             ),
-                            WeeklyStreakTile(thisWeek: 7),
+                            WeeklyStreakTile(thisWeek: 7, petName: _petName),
                             WeekActivity(
                               dailyMinutes: [60, 30, 19, 31, 13, 20, 0],
                             ),

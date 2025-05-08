@@ -4,9 +4,14 @@ import 'package:myapp/style/text_styles.dart';
 import 'dart:ui';
 
 class WeeklyStreakTile extends StatelessWidget {
+  final String? petName;
   final int thisWeek;
 
-  const WeeklyStreakTile({super.key, required this.thisWeek});
+  const WeeklyStreakTile({
+    super.key,
+    required this.thisWeek,
+    required this.petName,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +35,7 @@ class WeeklyStreakTile extends StatelessWidget {
             ),
             //SizedBox(height: 6),
             Text(
-              "Hacé que Nini haga al menos 60 minutos de actividad al día para mantener la racha.",
+              "Hacé que $petName haga al menos 60 minutos de actividad al día para mantener la racha.",
               style: AppTextStyles.text,
             ),
             SizedBox(height: 6),
